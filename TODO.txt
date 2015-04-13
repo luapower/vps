@@ -12,48 +12,11 @@ BUGS
 
 HOT TODO
 
-- multigit
-	- mgit pkg1,pkg2,... cmd ...
-	- mgit fork-replace pkg?
-
 - port luapower-git to multigit
-	- remove {{#meta_package}} nonsense
 	- change download page:
 		- make buttons for windows, linux and osx (different deps!)
-	- change faq Q for luadist (get features from zerobrane blog)
-
-- package management documentation consolidation
-	- read https://docs.npmjs.com/
-	- read http://guides.rubygems.org/
-
-- explanations
- 	- versioning using only major version
- 		- the only honest choice: the tags will show exactly how unstable an api really is
- 		- explain how just adding an extra arg to a function breaks compat.
- 	- explain M-N-hash versioning: M = API version, N = dev advancement
-
-- increase transparency
-	- version all packages
-	- bump versions when APIs change
-	- start committing with messages again so we can put back the news section
-
-- download buttons
-	- multiple release checkouts to different directories - is it possible?
-		- make zip bundles based on release checkouts
-	- version them with full date!
-	- make the bundle script automatically delete old versions
-	- make the homepage choose latest version based on files' mtime
-	- keep old versions around (80M * 6 = 500M / day -- how many days can we keep?)
-	- make daily lock files
-
-- luapower day
-	- document default license (public domain)
-	- add license tag to pkg.md ?
-	- parse license from pkg.lua header ?
-	- fix tests => run tests => record results and errors in luapower_db
 
 - unit testing day
-	- dev-dependencies <- dependencies required by tests, demos, and other scripts only
  	- replace 'unit' with a proper unit testing library
 		- busted
 		- gambiarra
@@ -69,32 +32,14 @@ HOT TODO
 - forum day
 	- development journal
 	- luapower roadmap
-	- faq entry: roadmap
-
-	- hate mail
 	- who are you and what's your plan for world domination?
 	- what modules would you like to see in luapower? poll?
 	- horror stories
-
-- versioned dependencies brainstorm
-	- note: need a way to specify version ranges of _indirect_ dependencies too!
-	- objective:
-		- all packages in a collection should work together on their latest version
-			- so each package has to keep up with the others
-				- if you break a package, you have to upgrade all its dependants
-	- how to solve the problem without having to declare dependency ranges?
-	- how useful is it in practice, even with the best of intentions? (not much)
-	- simpler conventions:
-		- tag everything with just major version
-		- increment the tag whenever existing behavior of any kind is changed
-		- dependants will break automatically
-	- other ideas:
-		- assume masters are always in sink at close times?
-		- allow dependants to add tags to their dependencies?
+	- flame wars (find fire icon)
 
 - describe how each aspect of a package manager is handled by different components:
 	- github: author, contact
-	- mg: versioning, transport
+	- mgit: change management, transport
 	- luapower: dependencies, platforms, description, C package info,
 	- standard: docs, binaries, build tools, build scripts, unit tests, demos,
 
@@ -106,6 +51,8 @@ HOT TODO
 	- move screenshots to media/web/* and route media/web to /media?
 
 - website cleanup / bugs / design day
+	- lights css select chrome bug
+	- link styling remove colors and try this idea: http://daringfireball.net/
 	- homepage
 		- sorting of platform icons
 	- package info page
@@ -115,6 +62,7 @@ HOT TODO
 		- which platform to go to for platform-dependent Lua modules? (package luajit)
 	- doc page
 		- "last updated ..." -> make it a link to the update log on that file!
+	- change faq Q for luadist (get features from zerobrane blog)
 	- discuss button
 	- issues button
 	- left sidebar
@@ -140,29 +88,61 @@ HOT TODO
 
 LOW-PRIORITY
 ==============================================================================
-- homepage stars: white and gray (7 days, 30 days)
-- module long description parsing from source (main module)
-- busybox style exe/symlinking (a topic for bundle)
-
-- rockspec generator
-	- how to register origins of dependencies
-	- Lua/C module paths must be for the right platform
-
-- infer binary dependencies
-	- on windows: how?
-	- on linux: how?
-	- on osx: how?
-
-- user column on news (must be github user - clickable)
-
-- code browser
-	- navigation on require"<module>"
-	- parse definitions and make a in-memory database
-	- navigate to symbols from other modules
-	- editable online
-	- literate-style view
-
-- comment system on all pages
-	- source code annotation and comments
-		- how to keep annotations in sync with changes in the code?
+- website
+	- homepage stars: white and gray (7 days, 30 days)
+	- news section with latest git commits?
+		- user column on news (must be github user - clickable)
+	- code browser
+		- navigation on require"<module>"
+		- parse definitions and make a in-memory database
+		- navigate to symbols from other modules
+		- editable online
+		- literate-style view
+	- comment system on all pages
+		- source code annotation and comments
+			- how to keep annotations in sync with changes in the code?
+	- get-involved / license section:
+		- put license tag in pkg.md
+		- default license in absence of a license tag is public domain
+		- put license files in csrc/pkg
+	- get-involved / versioning section:
+		- all packages in a collection should work together on their latest version
+			- each package has to keep up with the others
+				- if you break a package, _you_ have to upgrade all its dependants
+		- conventions:
+			- tag everything with just major version
+			- increment the tag whenever existing behavior of any kind is changed
+			- dependants will break automatically
+	- do some research on package managers and their docs
+		- read https://docs.npmjs.com/
+		- read http://guides.rubygems.org/
+	- homepage download buttons
+		- make daily lock files (compare to the last lock file/ignore if identical)
+		- make tag lockfiles (same algorithm)
+		- make zip bundles based on just-made lockfile
+		- make drop-down buttons which select old releases
+- luapower
+	- dev-dependencies <- dependencies required by tests, demos, and other scripts only
+		- we can use the require parser for these to avoid having to run them
+			- so these will not be per-platform dependencies (good enough)
+	- infer license:
+		- license/author tag in pkg.md
+		- look for csrc/pkg/*LICENSE*
+	- fix tests => run tests => record results and errors in luapower_db
+	- rockspec generator
+		- how to register origins of dependencies
+		- Lua/C module paths must be for the right platform
+	- infer binary dependencies
+		- on windows: how?
+		- on linux: how?
+		- on osx: how?
+	- parse luadoc headers from source
+		- license/author fields
+- bundle
+	- busybox style exe/symlinking?
+- multigit
+	- allow =ver in .origin file
+	- mgit path/to/mgit/root/<repo> ... <- check for slashes, and try to cd to that dir first
+	- mgit install [path: default /usr/local/bin/mgit | C:/some-system-path]
+	- mgit fork-replace pkg?
 
