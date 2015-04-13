@@ -5,6 +5,7 @@ needs 1GB RAM; ubuntu 14.04
 ## prerequisites:
 
 make a user and login
+
 apt-get update
 apt-get install git build-essential make libssl-dev libreadline-dev libpcre3-dev libncurses5-dev imagemagick nodejs npm pandoc redis-server zip mc tig dos2unix
 
