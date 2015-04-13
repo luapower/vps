@@ -4,6 +4,7 @@
 !nginx-*
 !nodebb-*
 !apt-*
+!git-*
 !.selected_editor
 !.config/
 !.config/**

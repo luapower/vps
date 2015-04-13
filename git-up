@@ -1,0 +1,4 @@
+#!/bin/bash
+git add -A
+msg="$1"; [ "$msg" ] || msg=unimportant; git commit -m "$msg"
+git push
