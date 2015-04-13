@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.gitconfig
+!nginx-*
+!nodebb-*
+!apt-*
+!.selected_editor
+!.config/
+!.config/**
+!*.txt

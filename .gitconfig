@@ -1,0 +1,7 @@
+[user]
+	email = cosmin.apreutesei@gmail.com
+	name = Cosmin Apreutesei
+[push]
+	default = simple
+[url "ssh://git@github.com/luapower/"]
+	insteadOf = https://github.com/luapower/
