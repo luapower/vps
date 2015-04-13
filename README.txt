@@ -20,7 +20,7 @@ luapower		mkdir luapower; cd luapower; mgit clone git@github.com:luapower/luapow
 nodebb			mkdir nodebb; cd nodebb; mgit clone git@github.com:luapower/forum.git; mgit clone nodebb; (get secret from safe)> .mgit/secret & config.json
 openresty		get openresty-1.7.10.1+; ./configure --prefix=/home/cosmin/openresty
 ssl-cert		get luapower.com.key from safe; get luapower.com.crt from globessl.com; gen dhparm.pem
-website			git clone git@github.com:luapower/website.git; cd website; ln -s ../luapower luapower; ln -s ../openresty openresty
+website			git clone git@github.com:luapower/website.git; cd website; ln -s ../luapower luapower; ln -s ../openresty openresty; cd nginx/conf; ln -s nginx.prod.conf nginx.conf
 
 ## crontab -e
 
