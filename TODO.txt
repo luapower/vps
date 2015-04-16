@@ -1,106 +1,35 @@
 HIGH-PRIORITY
 ==============================================================================
 
-BUGS
-- libgit2 git.open() windows problem
-- libgit2 git.config_find_*() linux problem
-- giflib crashes with too-small strings
-- expat_test takes too long
-- libpng_test fails -- save not implemented
-- svg_parser_demo doesn't work anymore (CairoSGPanel?)
-- disposing objc classes with subclasses crashes
+- download page: "all" option to get the combined list of deps for all platforms
 
-HOT TODO
+- package info page
+	- missing info...
+	- add links to lua manual, luajit manual, or C source for ALL built-in modules
+	- which platform to go to for platform-dependent Lua modules? (vmdef.lua)
 
-- port luapower-git to multigit
-	- change download page:
-		- make buttons for windows, linux and osx (different deps!)
+- doc page / left sidebar
+	- other packages in category
+	- other categories
 
-- unit testing day
- 	- replace 'unit' with a proper unit testing library
-		- busted
-		- gambiarra
-		- luaunit
-		- shake even?
-	- not testing anything (but fast and don't crash):
-		bitmap_test
-		freetype_test
-		fribidi_test
-		harfbuzz_test
-		lexer_test
+- update-repos script
+	- invalidate website cache
+		- only for packages that were actually updated
 
-- forum day
-	- development journal
-	- luapower roadmap
-	- who are you and what's your plan for world domination?
-	- what modules would you like to see in luapower? poll?
-	- horror stories
-	- flame wars (find fire icon)
+WARM TODO --------------------------------------------------------------------
 
-- describe how each aspect of a package manager is handled by different components:
-	- github: author, contact
-	- mgit: change management, transport
-	- luapower: dependencies, platforms, description, C package info,
-	- standard: docs, binaries, build tools, build scripts, unit tests, demos,
+- luapower
+	- dev-dependencies
+		- scripts() -> module_requires_parsed()
+		- add them to website/package info
+		- add website/download/clone section "Additional packages for running tests & demos"
+	- infer license:
+		- license/author tag in pkg.md
+		- look for csrc/pkg/*LICENSE*
 
-- API cleanup day
-	- unprotect(pcall()) all I/O-bearing functions (glue.writefile, jpeg/png/gif load/save)
-
-- documentation cleanup day
-	- use of headings
-	- move screenshots to media/web/* and route media/web to /media?
-
-- website cleanup / bugs / design day
-	- lights css select chrome bug
-	- link styling remove colors and try this idea: http://daringfireball.net/
-	- homepage
-		- sorting of platform icons
-	- package info page
-		- missing information...
-		- add links for built-in modules
-		- don't make links for the rest of the built-in modules
-		- which platform to go to for platform-dependent Lua modules? (package luajit)
-	- doc page
-		- "last updated ..." -> make it a link to the update log on that file!
-	- change faq Q for luadist (get features from zerobrane blog)
-	- discuss button
-	- issues button
-	- left sidebar
-		- other modules in category
-		- other categories
+- website
 	- test website on firefox
 	- test website on IE
-	- generalize icon switches that show/hide stuff
-		- fade animation
-		- persist state
-		- use local storage instead of cookies
-	- the problem of blocking actions
-		- git pull sucks the most
-		- upgrade to a process queue system?
-		- use shm/clear cache stack?
-
-- anouncement day
-	- put more pure-Lua libs on the lua wiki
-	- put more Lua+ffi libs on the luajit wiki
-	- ann the new version / changelog
-
-
-
-LOW-PRIORITY
-==============================================================================
-- website
-	- homepage stars: white and gray (7 days, 30 days)
-	- news section with latest git commits?
-		- user column on news (must be github user - clickable)
-	- code browser
-		- navigation on require"<module>"
-		- parse definitions and make a in-memory database
-		- navigate to symbols from other modules
-		- editable online
-		- literate-style view
-	- comment system on all pages
-		- source code annotation and comments
-			- how to keep annotations in sync with changes in the code?
 	- get-involved / license section:
 		- put license tag in pkg.md
 		- default license in absence of a license tag is public domain
@@ -113,22 +42,107 @@ LOW-PRIORITY
 			- tag everything with just major version
 			- increment the tag whenever existing behavior of any kind is changed
 			- dependants will break automatically
-	- do some research on package managers and their docs
+
+- forum writing day
+	- development journal
+	- luapower roadmap
+	- who are you and what's your plan for world domination?
+	- what modules would you like to see in luapower? poll?
+	- horror stories
+	- flame wars (find fire icon)
+	- describe how each aspect of a package manager is handled by different components:
+		- github: author, contact
+		- mgit: change management, transport
+		- luapower: dependencies, platforms, description, C package info,
+		- standard: docs, binaries, build tools, build scripts, unit tests, demos,
+
+- documentation cleanup day
+	- use of headings
+	- move screenshots to media/web/* and route media/web to /media?
+
+- anouncement day
+	- put more pure-Lua libs on the lua wiki
+	- put more Lua+ffi libs on the luajit wiki
+	- announce the new version / changelog
+	- announce multigit to git mailinglist and other sites
+
+==============================================================================
+LOW-PRIORITY
+==============================================================================
+
+- towards automated unit testing
+	- fix bugs
+		- giflib crashes with too-small strings
+		- expat_test takes too long
+		- libpng_test fails -- save not implemented
+		- svg_parser_demo doesn't work anymore (CairoSGPanel?)
+		- HARD: disposing objc classes with subclasses crashes
+		- HARD: "class already defined" bug on window: dispose WNDCLASSes on module unloading
+	- not testing anything (but fast and don't crash):
+		bitmap_test
+		freetype_test
+		fribidi_test
+		harfbuzz_test
+		lexer_test
+ 	- replace 'unit' with a proper unit testing library
+		- busted
+		- gambiarra
+		- luaunit
+		- shake even?
+	- luapower: run *_test scripts, and record test results and errors in luapower_db
+
+- IDEA: separate out tests + demos + media files in *-test packages
+	- Q: separate binaries too? separate platforms too? we'd have N*6 packages...
+	- Q: make a diff. branch or a diff. repo?
+		- if branch, how easy it is to work with branches in git / mgit?
+	- luapower:
+		- test_package(pkg) -> pkg
+		- module_packages() <- known - installed - not-test packages
+	- website:
+		- use module_packages() instead of installed_packages()
+		- download: test package - separate button, separate clone section
+
+- research day
+	- other package managers and their docs
 		- read https://docs.npmjs.com/
 		- read http://guides.rubygems.org/
+	- use luadist some
+		- compare the commands
+		- compare the implementation dependencies
+		- get list of features from zerobrane blog
+
+- API cleanup
+	- unprotect(pcall()) all I/O-bearing functions (glue.writefile, jpeg/png/gif load/save)
+
+- website
+	- link styling remove colors and try this idea: http://daringfireball.net/
+	- doc page / "last updated ..." -> make it a link to the update log on that file!
+	- discuss button -> forum topic
+	- generalize icon switches that show/hide stuff
+		- fade animation
+		- persist state
+		- use local storage instead of cookies
+	- homepage stars: white and gray (7 days, 30 days)
+	- news section with latest git commits?
+		- user column on news (must be github user - clickable)
 	- homepage download buttons
 		- make daily lock files (compare to the last lock file/ignore if identical)
 		- make tag lockfiles (same algorithm)
 		- make zip bundles based on just-made lockfile
 		- make drop-down buttons which select old releases
+
+- website / maybe someday
+	- code browser
+		- navigation on require"<module>"
+		- parse definitions and make a in-memory database
+		- navigate to symbols from other modules
+		- editable online
+		- literate-style view
+	- comment system on all pages
+		- source code annotation and comments
+			- how to keep annotations in sync with changes in the code?
+
 - luapower
-	- dev-dependencies <- dependencies required by tests, demos, and other scripts only
-		- we can use the require parser for these to avoid having to run them
-			- so these will not be per-platform dependencies (good enough)
-	- infer license:
-		- license/author tag in pkg.md
-		- look for csrc/pkg/*LICENSE*
-	- fix tests => run tests => record results and errors in luapower_db
 	- rockspec generator
 		- how to register origins of dependencies
 		- Lua/C module paths must be for the right platform
@@ -138,11 +152,16 @@ LOW-PRIORITY
 		- on osx: how?
 	- parse luadoc headers from source
 		- license/author fields
+
 - bundle
 	- busybox style exe/symlinking?
-- multigit
-	- allow =ver in .origin file
-	- mgit path/to/mgit/root/<repo> ... <- check for slashes, and try to cd to that dir first
-	- mgit install [path: default /usr/local/bin/mgit | C:/some-system-path]
-	- mgit fork-replace pkg?
 
+- multigit
+	- allow branch in clone url syntax: [ORIGIN/]REPO|URL[=[BRANCH:]VERSION]
+		- how about repo=branch:v2,tag:r5-5-567adf or repo(v2)=tag:r5-5-567adf
+	- allow checking out a diff. branch from the same package under a diff. name?
+		- mgit clone pkg1 --as p1 pkg2 --as=p2
+		- limited use: only for branches that have no files in common (eg. gh-pages)
+		- implication: add REMOTE|URL=BRANCH: syntax in .origin files
+
+- luajit: rebuild for linux using TARGET_FLAGS=-pthread
