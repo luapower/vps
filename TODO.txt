@@ -1,6 +1,12 @@
 HIGH-PRIORITY
 ==============================================================================
 
+- code-review luapower.lua luapower_cli.lua
+- test by looking at info pages
+- refill the db again on all platforms
+- rebuild libpng, freetype and cairo with -fno-stack-protector for glibc 2.7 compat.
+	- document the flag...
+
 - download page: "all" option to get the combined list of deps for all platforms
 
 - package info page
