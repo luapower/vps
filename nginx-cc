@@ -1,0 +1,2 @@
+#!/bin/sh
+wget -qO- https://luapower.com/clear_cache/$1
