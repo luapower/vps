@@ -21,4 +21,4 @@ nodebb			mkdir nodebb; cd nodebb; mgit clone git@github.com:luapower/forum.git; 
 openresty		get openresty-1.7.10.1+; ./configure --prefix=/home/cosmin/openresty; make; make install
 ssl-cert		get luapower.com.key from safe; get luapower.com.crt from globessl.com; gen dhparm.pem
 website			git clone git@github.com:luapower/website.git; cd website; ln -s ../luapower luapower; ln -s ../openresty openresty; cd nginx/conf; ln -s nginx.prod.conf nginx.conf
-cron & boot		crontab crontab
+cron & boot		mkdir ~/logs; crontab crontab
