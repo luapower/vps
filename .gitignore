@@ -1,6 +1,7 @@
 *
 !.gitignore
 !.gitconfig
+!files
 !nginx
 !nginx-*
 !nodebb-*
