@@ -29,3 +29,6 @@
 @reboot ~/nginx-start
 
 0 6 * * * sudo /usr/bin/apt-mirror
+
+0 * * * * ~/luajit-web/update-github
+0 0 * * * ~/luajit-web/update-html
