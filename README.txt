@@ -51,6 +51,11 @@ website
 	ln -s ../files files
 	cd nginx/conf
 	ln -s nginx.prod.conf nginx.conf
+luajit-htags
+	git clone git@github.com:capr/luajit-htags.git
+	mkdir -p files/htags
+	ln -s ../../luajit-htags/dynasm.htags/HTML files/htags/dynasm
+	ln -s ../../luajit-htags/luajit.htags/HTML files/htags/luajit
 cron & boot
 	mkdir ~/logs
 	crontab crontab
