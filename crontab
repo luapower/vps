@@ -30,5 +30,5 @@
 
 0 6 * * * sudo /usr/bin/apt-mirror
 
-0 * * * * ~/luajit-web/update-github
-0 0 * * * ~/luajit-web/update-html
+0 * * * * ~/luajit-htags/update-github
+0 0 * * * ~/luajit-htags/update-html
