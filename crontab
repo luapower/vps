@@ -21,14 +21,14 @@
 # 
 # m h  dom mon dow   command
 
-0 0  * * * ~/website/bundle > ~/logs/bundle.log 2> ~/logs/bundle-err.log
-0 *  * * * ~/website/pull-repos > ~/logs/pull-repos.log 2> ~/logs/pull-repos-err.log
-0 1  * * * ~/nodebb-backup > ~/logs/nodebb-backup.log 2> ~/logs/nodebb-backup-err.log
+0 0  * * * ~/website/bundle     > ~/logs/bundle.log        2> ~/logs/bundle-err.log
+0 *  * * * ~/website/pull-repos > ~/logs/pull-repos.log    2> ~/logs/pull-repos-err.log
+0 1  * * * ~/nodebb-backup      > ~/logs/nodebb-backup.log 2> ~/logs/nodebb-backup-err.log
 
 @reboot ~/nodebb-start
 @reboot ~/nginx-start
 
 0 6 * * * sudo /usr/bin/apt-mirror
 
-0 * * * * ~/luajit-htags/update-github
-0 0 * * * ~/luajit-htags/update-html
+0 * * * * ~/luajit-htags/update-github > ~/logs/htags-update-github.log 2> ~/logs/htags-update-github-err.log
+0 0 * * * ~/luajit-htags/update-html   > ~/logs/htags-update-html.log   2> ~/logs/htags-update-html-err.log
