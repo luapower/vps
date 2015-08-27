@@ -21,16 +21,17 @@
 # 
 # m h  dom mon dow   command
 
-0 0  * * * ~/website/bundle     2>&1 >  ~/logs/bundle.log
-0 *  * * * ~/website/pull-repos 2>&1 >> ~/logs/pull-repos.log
-0 1  * * * ~/nodebb-backup      2>&1 >  ~/logs/nodebb-backup.log
+0  0  * * * ~/website/bundle     2>&1 >  ~/logs/bundle.log
+0  *  * * * ~/website/pull-repos 2>&1 >> ~/logs/pull-repos.log
+0  1  * * * ~/nodebb-backup      2>&1 >  ~/logs/nodebb-backup.log
 
 @reboot ~/nodebb-start
 @reboot ~/nginx-start
 
-0 6 * * * sudo /usr/bin/apt-mirror
+0  6 * * * sudo /usr/bin/apt-mirror
 
-0 * * * * ~/luajit-htags/update-github 2>&1 > ~/logs/htags-update-github.log
-0 0 * * * ~/luajit-htags/update-html   2>&1 > ~/logs/htags-update-html.log
+0  * * * * ~/luajit-htags/update-github 2>&1 > ~/logs/htags-update-github.log
+0  0 * * * ~/luajit-htags/update-html   2>&1 > ~/logs/htags-update-html.log
 
-0 * * * * ~/all-repo-update
+30 * * * * ~/all-repo-update
+40 3 * * * ~/all-repo-get
