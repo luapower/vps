@@ -7,7 +7,7 @@ needs 1GB RAM; ubuntu 14.04
 make a user and login
 
 apt-get update
-apt-get install git build-essential make libssl-dev libreadline-dev libpcre3-dev libncurses5-dev imagemagick nodejs npm pandoc redis-server zip mc tig dos2unix
+apt-get install apt-mirror build-essential cscope dos2unix dpkg-dev fcgiwrap git git-core global htop imagemagick lib32bz2-1.0 lib32ncurses5 lib32z1 libncurses5-dev libpcre3-dev libreadline-dev libssl-dev make mc nodejs nodejs-legacy npm pandoc python-software-properties software-properties-common tig zip
 
 sudo ln -sf ~/git-up /usr/lib/git-core/git-up
 gen/add github key
@@ -24,6 +24,10 @@ luapower
 	cd luapower
 	mgit clone git@github.com:luapower/luapower-repos
 	mgit clone-all
+redis
+	sudo apt-add-repository ppa:chris-lea/redis-server
+	sudo apt-get update
+	sudo apt-get install redis-server
 nodebb
 	mkdir nodebb
 	cd nodebb
