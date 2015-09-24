@@ -21,7 +21,7 @@
 # 
 # m h  dom mon dow   command
 
-0  0  * * * ~/website/bundle     2>&1 >  ~/logs/bundle.log
+#0  0  * * * ~/website/bundle     2>&1 >  ~/logs/bundle.log
 0  *  * * * ~/website/pull-repos 2>&1 >> ~/logs/pull-repos.log
 0  1  * * * ~/nodebb-backup      2>&1 >  ~/logs/nodebb-backup.log
 
@@ -35,3 +35,4 @@
 
 30 * * * * ~/all-repo-update
 40 3 * * * ~/all-repo-get
+0  0 * * * ~/all-repo-tag

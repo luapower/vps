@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd ~/luapower
+git tag "$(date +%Y-%m-%d)"
+git push --tags
