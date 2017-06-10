@@ -87,7 +87,7 @@ ssl-cert
 	mkdir ssl-cert
 	cd ssl-cert
 	*** make file luapower.com.key with contents from safe
-	*** make file luapower.com.crt with contents from globessl.com
+	*** make file luapower.com.crt with contents from globessl.com (paste both CRT and CA sections)
 	openssl dhparam -out dhparam.pem 4096 (note: this will take 15min to complete!)
 files
 	cd files
