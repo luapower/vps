@@ -73,10 +73,9 @@ nodebb
 	mkdir nodebb
 	cd nodebb
 	mgit clone git@github.com:luapower/forum.git
-	mgit clone-release current
-	npm install
+	mgit clone-release fixed
 	*** get secret from safe and put it into .mgit/secret & config.json
-	mgit restore   # restore the database and restart the server
+	mgit restore   # restore the database
 openresty
 	wget https://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz
 	tar xvfz ngx_openresty-1.7.10.1.tar.gz
@@ -107,3 +106,9 @@ luajit-htags
 cron & boot
 	mkdir logs
 	crontab crontab
+
+
+## start the servers
+
+	./nginx-start
+	./nodebb-start
