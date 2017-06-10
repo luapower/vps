@@ -74,6 +74,7 @@ nodebb
 	cd nodebb
 	mgit clone git@github.com:luapower/forum.git
 	mgit clone-release current
+	npm install
 	*** get secret from safe and put it into .mgit/secret & config.json
 	mgit restore   # restore the database and restart the server
 openresty
