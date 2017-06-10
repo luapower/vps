@@ -5,14 +5,15 @@ needs 1GB RAM; ubuntu 14.04
 
 ## functionality
 
-  * luapower.com website (openresty+luapower)
-  * luapower.com forum (nodebb+redis)
-  * compiler tools (static files)
-  * luajit browsable sources (htags-generated static website)
+  * luapower-related
+    * luapower.com website (openresty+luapower)
+    * luapower.com forum (nodebb+redis)
+    * compiler tools (static files)
+    * luajit browsable sources (htags-generated static website)
   * personal stuff
     * mokingburd.de website (static website)
     * capr.github.io (static website)
-    * 
+    * ifthen-dojo.io (openresty+luapower+webb)
 
 ## crontab
 
@@ -106,6 +107,10 @@ website
 luajit-htags
 	git clone git@github.com:capr/luajit-htags.git
 	ln -s ../luajit-htags/htags files/htags
+apt-mirror
+	*** comment all lines in /etc/apt/mirror.list and enter these lines instead:
+		deb-amd64 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu lucid main
+		deb-i386  http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu lucid main
 cron & boot
 	mkdir logs
 	crontab crontab
