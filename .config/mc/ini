@@ -81,6 +81,8 @@ mcview_eof=
 ignore_ftp_chattr_errors=true
 skin=default
 
+filepos_max_saved_entries=1024
+
 [Layout]
 message_visible=1
 keybar_visible=1
