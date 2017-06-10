@@ -9,8 +9,10 @@ needs 1GB RAM; ubuntu 14.04
   * luapower.com forum (nodebb+redis)
   * compiler tools (static files)
   * luajit browsable sources (htags-generated static website)
-  * mokingburd.de website (static website)
-
+  * personal stuff
+    * mokingburd.de website (static website)
+    * capr.github.io (static website)
+    * 
 
 ## crontab
 
@@ -109,7 +111,8 @@ cron & boot
 	crontab crontab
 mokingburd.de
 	git clone git@github.com:capr/mokingburd.de.git  # nginx is already configured to serve it
-
+capr.github.io
+	git clone git@github.com:capr/capr.github.io.git  # nginx is already configured to serve it
 
 ## start the servers
 
