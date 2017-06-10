@@ -9,6 +9,7 @@ needs 1GB RAM; ubuntu 14.04
   * luapower.com forum (nodebb+redis)
   * compiler tools (static files)
   * luajit browsable sources (htags-generated static website)
+  * mokingburd.de website (static website)
 
 
 ## crontab
