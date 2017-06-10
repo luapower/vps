@@ -2,6 +2,7 @@
 
 needs 1GB RAM; ubuntu 14.04
 
+
 ## functionality
 
   * luapower.com website (openresty+luapower)
@@ -9,13 +10,21 @@ needs 1GB RAM; ubuntu 14.04
   * compiler tools (static files)
   * luajit browsable sources (htags-generated static website)
 
+
 ## crontab
 
-  * update/push luapower-all (each half hour, so that master.zip from the download button reflects the current state of the code)
-  * release-tag luapower-all (every day, so that we can download old releases)
-  * download github.com/luapower/luapower-all/archive/master.zip (every day, so that its reported size on the download button is correct)
-  * pull official LuaJIT (every hour)
-  * update the LuaJIT htags (every day)
+  * luapower source code
+    * pull luapower (hourly, so that code search works; we have github hooks on all repos that trigger pulling, so this is just a safety measure)
+  * luapower bundle
+    * update/push luapower-all (each half hour, so that master.zip from the download button reflects the current state of the code)
+    * release-tag luapower-all (daily, so that we can download old releases)
+    * download github.com/luapower/luapower-all/archive/master.zip (every day, so that its reported size on the download button reflects the actual size of the archive)
+  * luajit htags
+    * pull official LuaJIT for htags (hourly)
+    * update the LuaJIT htags (daily)
+  * forum
+    * backup the redis db and any new files (plugins, customization, etc.) to the `forum` repo (daily)
+
 
 ## prerequisites
 
@@ -35,7 +44,7 @@ needs 1GB RAM; ubuntu 14.04
 ### enable pushing to github
 
 	ssh-keygen -t rsa -C "cosmin.apreutesei@gmail.com"	
-	gpto https://github.com/settings/keys and add a new key with the contents of ~/.ssh/id_rsa.pub
+	*** goto https://github.com/settings/keys and add a new key with the contents of ~/.ssh/id_rsa.pub
 
 
 ## install
@@ -51,6 +60,11 @@ luapower
 	cd luapower
 	mgit clone git@github.com:luapower/luapower-repos
 	mgit clone-all
+	*** generate luapower_db.lua by running luapower on all platforms
+luapower-all
+	git clone git@github.com:luapower/luapower-all.git
+	mv luapower-all/.git luapower/
+	rm -R luapower-all
 redis
 	sudo apt-add-repository ppa:chris-lea/redis-server
 	sudo apt-get update
@@ -60,8 +74,8 @@ nodebb
 	cd nodebb
 	mgit clone git@github.com:luapower/forum.git
 	mgit clone-release current
-	(get secret from safe)> .mgit/secret & config.json
-	
+	*** get secret from safe and put it into .mgit/secret & config.json
+	mgit restore   # decompress/decrypt redis database backup file
 openresty
 	wget https://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz
 	tar xvfz ngx_openresty-1.7.10.1.tar.gz
@@ -72,9 +86,9 @@ openresty
 ssl-cert
 	mkdir .ssl-cert
 	cd .ssl-cert
-	make file luapower.com.key with contents from safe
-	make file luapower.com.crt with contents from globessl.com
-	openssl dhparam -out dhparam.pem 4096 (this will take 15min!!!)
+	*** make file luapower.com.key with contents from safe
+	*** make file luapower.com.crt with contents from globessl.com
+	openssl dhparam -out dhparam.pem 4096 (note: this will take 15min to complete!)
 files
 	cd files
 	./get-all.sh
