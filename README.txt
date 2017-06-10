@@ -9,7 +9,10 @@ needs 1GB RAM; ubuntu 14.04
   * luapower.com forum (nodebb+redis)
   * compiler tools (static files)
   * luajit browsable sources (htags-generated static website)
-
+  * personal stuff
+    * mokingburd.de website (static website)
+    * capr.github.io (static website)
+    * 
 
 ## crontab
 
@@ -73,9 +76,9 @@ nodebb
 	mkdir nodebb
 	cd nodebb
 	mgit clone git@github.com:luapower/forum.git
-	mgit clone-release current
+	mgit clone-release fixed
 	*** get secret from safe and put it into .mgit/secret & config.json
-	mgit restore   # restore the database and restart the server
+	mgit restore   # restore the database
 openresty
 	wget https://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz
 	tar xvfz ngx_openresty-1.7.10.1.tar.gz
@@ -84,10 +87,10 @@ openresty
 	make
 	make install
 ssl-cert
-	mkdir .ssl-cert
-	cd .ssl-cert
+	mkdir ssl-cert
+	cd ssl-cert
 	*** make file luapower.com.key with contents from safe
-	*** make file luapower.com.crt with contents from globessl.com
+	*** make file luapower.com.crt with contents from globessl.com (paste both CRT and CA sections)
 	openssl dhparam -out dhparam.pem 4096 (note: this will take 15min to complete!)
 files
 	cd files
@@ -106,3 +109,12 @@ luajit-htags
 cron & boot
 	mkdir logs
 	crontab crontab
+mokingburd.de
+	git clone git@github.com:capr/mokingburd.de.git  # nginx is already configured to serve it
+capr.github.io
+	git clone git@github.com:capr/capr.github.io.git  # nginx is already configured to serve it
+
+## start the servers
+
+	./nginx-start
+	./nodebb-start
