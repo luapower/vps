@@ -75,7 +75,7 @@ nodebb
 	mgit clone git@github.com:luapower/forum.git
 	mgit clone-release current
 	*** get secret from safe and put it into .mgit/secret & config.json
-	mgit restore   # decompress/decrypt redis database backup file
+	mgit restore   # restore the database and restart the server
 openresty
 	wget https://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz
 	tar xvfz ngx_openresty-1.7.10.1.tar.gz
