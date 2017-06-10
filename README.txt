@@ -102,7 +102,7 @@ website
 	ln -s nginx.prod.conf nginx.conf
 luajit-htags
 	git clone git@github.com:capr/luajit-htags.git
-	ln -s luajit-htags/htags files/htags
+	ln -s ../luajit-htags/htags files/htags
 cron & boot
 	mkdir logs
 	crontab crontab
