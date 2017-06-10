@@ -106,6 +106,8 @@ luajit-htags
 cron & boot
 	mkdir logs
 	crontab crontab
+mokingburd.de
+	git clone git@github.com:capr/mokingburd.de.git  # nginx is already configured to serve it
 
 
 ## start the servers
