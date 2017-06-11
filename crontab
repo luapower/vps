@@ -33,9 +33,9 @@
 
 0  6 * * * sudo /usr/bin/apt-mirror
 
-0  * * * * ~/luajit-htags/update-github 2>&1 > ~/logs/htags-update-github.log
+0  * * * * ~/luajit-htags/pull-luajit   2>&1 > ~/logs/htags-pull-luajit.log
 0  0 * * * ~/luajit-htags/update-html   2>&1 > ~/logs/htags-update-html.log
 
-30 * * * * ~/all-repo-update
-40 3 * * * ~/all-repo-get
-0  0 * * * ~/all-repo-tag
+30 * * * * ~/luapower.com/all-repo-update
+40 3 * * * ~/luapower.com/all-repo-get
+0  0 * * * ~/luapower.com/all-repo-tag
