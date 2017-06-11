@@ -3,7 +3,7 @@
 !.gitconfig
 !files
 !nginx/
-!nginx/*
+!nginx/**
 !nodebb-*
 !apt-*
 !git-*
