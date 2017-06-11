@@ -1,1 +1,1 @@
-sudo -E ~/website/ngx "$@"
+sudo -E ~/luapower.com/ngx "$@"
