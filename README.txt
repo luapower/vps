@@ -137,5 +137,5 @@ capr.github.io
 luapower.com/otr
 	git clone git@github.com:capr/otr.git  # nginx is already configured to serve it
 ifthen-dojo (TODO)
-	git clone git@github.com:capr/ifthen-dojo-website.git  # nginx is already configured to serve it
+	git clone git@github.com:capr/ifthen-dojo-website.git ifthen-dojo.io  # nginx is already configured to serve it
 
