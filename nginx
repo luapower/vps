@@ -1,1 +1,0 @@
-sudo -E ~/luapower.com/ngx "$@"

@@ -26,10 +26,12 @@
 ## 0  0  * * * ~/luapower.com/bundle     2>&1 >  ~/logs/bundle.log
 
 0  *  * * * ~/luapower.com/pull-repos 2>&1 >> ~/logs/pull-repos.log
-0  1  * * * ~/nodebb-backup           2>&1 >  ~/logs/nodebb-backup.log
+0  1  * * * ~/nodebb/nodebb-backup    2>&1 >  ~/logs/nodebb-backup.log
 
-@reboot ~/nodebb-start
-@reboot ~/nginx-start
+@reboot ~/nodebb/nodebb-start
+@reboot ~/luapower.com/ngx-start
+@reboot ~/ifthen-dojo.io/ngx-start
+@reboot ~/ngx-start
 
 0  6 * * * sudo /usr/bin/apt-mirror
 

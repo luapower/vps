@@ -2,8 +2,8 @@
 !.gitignore
 !.gitconfig
 !files
-!nginx
-!nginx-*
+!nginx/
+!nginx/*
 !nodebb-*
 !apt-*
 !git-*

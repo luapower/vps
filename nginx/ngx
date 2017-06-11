@@ -1,0 +1,5 @@
+#!/bin/bash
+# nginx wrapper for all the websites hosted on this vps
+
+cd "$(dirname "$0")" || exit 1
+sudo -E nginx -p "$PWD" -c "$PWD/nginx.conf" "$@"
