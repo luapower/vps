@@ -134,7 +134,7 @@ cron & boot
 	./nodebb/nodebb-start
 	./luapower.com/ngx-start
 	./ifthen-dojo.io/ngx-start
-	./ngx-start
+	./nginx/ngx-start
 
 
 ## personal stuff
