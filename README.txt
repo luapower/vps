@@ -10,6 +10,8 @@ needs 1GB RAM; ubuntu 14.04
     * luapower.com forum (nodebb+redis)
     * compiler tools (static files)
     * luajit browsable sources (htags-generated static website)
+    * apt mirror for ubuntu's "test toolchain" PPA
+    * git mirror for luapower repos (git-mirror; currently empty)
   * personal stuff
     * mokingburd.de (static website)
     * capr.github.io (static website)
@@ -36,7 +38,7 @@ needs 1GB RAM; ubuntu 14.04
 ### update/install packages
 
 	apt-get update
-	apt-get install apt-mirror build-essential cscope dos2unix dpkg-dev fcgiwrap git git-core global htop imagemagick lib32bz2-1.0 lib32ncurses5 lib32z1 libncurses5-dev libpcre3-dev libreadline-dev libssl-dev make mc nodejs nodejs-legacy npm pandoc python-software-properties software-properties-common tig zip curl
+	apt-get install apt-mirror build-essential cscope dos2unix dpkg-dev fcgiwrap git git-core global htop imagemagick lib32bz2-1.0 lib32ncurses5 lib32z1 libncurses5-dev libpcre3-dev libreadline-dev libssl-dev make mc nodejs nodejs-legacy npm pandoc python-software-properties software-properties-common tig zip curl nginx
 	
 ### install git-lfs
 
@@ -56,6 +58,11 @@ needs 1GB RAM; ubuntu 14.04
 	ssh-keygen -t rsa -C "cosmin.apreutesei@gmail.com"	
 	*** goto https://github.com/settings/keys and add a new key with the contents of ~/.ssh/id_rsa.pub
 
+## enable logging in without a password
+
+	*** import contents of .ssh/id_rsa into puttygen and make a putty ppk file to use with putty
+	cp .ssh/id_rsa.pub .ssh/authorized_keys
+	cp .ssh/id_rsa .ssh/id_rsa.pub .ssh/authorized_keys /root/.ssh/  # to login as root directly with the same key
 
 ## install
 
@@ -70,7 +77,7 @@ luapower
 	cd luapower
 	mgit clone git@github.com:luapower/luapower-repos
 	mgit clone-all
-	*** generate luapower_db.lua by running luapower on all platforms
+	*** generate luapower_db.lua by running ./luapower update-db on all platforms
 luapower-all
 	git clone git@github.com:luapower/luapower-all.git
 	mv luapower-all/.git luapower/
@@ -84,7 +91,7 @@ nodebb
 	cd nodebb
 	mgit clone git@github.com:luapower/forum.git
 	mgit clone-release fixed
-	*** get secret from safe and put it into .mgit/secret & config.json
+	*** get secret from safe and put it into .mgit/secret and into config.json
 	mgit restore   # restore the database
 openresty
 	wget https://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz
@@ -97,7 +104,9 @@ ssl-cert
 	mkdir ssl-cert
 	cd ssl-cert
 	*** make file luapower.com.key with contents from safe
-	*** make file luapower.com.crt with contents from globessl.com (paste both CRT and CA sections)
+	*** make file luapower.com.crt with contents from safe (paste both CRT and CA sections)
+	*** make file ifthen-dojo.io.key with contents from safe
+	*** make file ifthen-dojo.io.crt with contents from safe (paste both CRT and CA sections)
 	openssl dhparam -out dhparam.pem 4096 (note: this will take 15min to complete!)
 files
 	cd files
@@ -108,8 +117,6 @@ website
 	ln -s ../luapower luapower
 	ln -s ../openresty openresty
 	ln -s ../files files
-	cd nginx/conf
-	ln -s nginx.prod.conf nginx.conf
 luajit-htags
 	git clone git@github.com:capr/luajit-htags.git
 	ln -s ../luajit-htags/htags files/htags
@@ -124,8 +131,10 @@ cron & boot
 
 ## start the servers
 
-	./nginx-start
-	./nodebb-start
+	./nodebb/nodebb-start
+	./luapower.com/ngx-start
+	./ifthen-dojo.io/ngx-start
+	./ngx-start
 
 
 ## personal stuff
