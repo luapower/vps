@@ -103,8 +103,8 @@ files
 	cd files
 	./get-all.sh
 website
-	git clone git@github.com:luapower/website.git
-	cd website
+	git clone git@github.com:luapower/website.git luapower.com
+	cd luapower.com
 	ln -s ../luapower luapower
 	ln -s ../openresty openresty
 	ln -s ../files files
