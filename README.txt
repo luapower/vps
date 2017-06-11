@@ -110,7 +110,7 @@ ssl-cert
 	openssl dhparam -out dhparam.pem 4096 (note: this will take 15min to complete!)
 files
 	cd files
-	./get-all.sh
+	./get-all.sh   # actually get them from the mega backup
 website
 	git clone git@github.com:luapower/website.git luapower.com
 	cd luapower.com
