@@ -10,6 +10,8 @@ needs 1GB RAM; ubuntu 14.04
     * luapower.com forum (nodebb+redis)
     * compiler tools (static files)
     * luajit browsable sources (htags-generated static website)
+    * apt mirror for ubuntu's "test toolchain" PPA
+    * git mirror for luapower repos (git-mirror; currently empty)
   * personal stuff
     * mokingburd.de (static website)
     * capr.github.io (static website)
