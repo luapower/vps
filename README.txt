@@ -21,7 +21,7 @@ needs 1GB RAM; ubuntu 14.04
 ## crontab
 
   * luapower source code
-    * pull luapower (hourly, so that code search works; we have github hooks on all repos that trigger pulling, so this is just a safety measure)
+    * pull all packages (hourly, so that docs are updated and for code search; we have github hooks on all repos that trigger pulling, so this is just a safety measure)
   * luapower bundle
     * update/push luapower-all (each half hour, so that master.zip from the download button reflects the current state of the code)
     * release-tag luapower-all (daily, so that we can download old releases)
