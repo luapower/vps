@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git clone git@github.com:capr/multigit.git
+sudo ln -sf $HOME/multigit/mgit /usr/local/bin/
+
+sudo ln -sf $HOME/git-up /usr/lib/git-core/
