@@ -15,7 +15,7 @@ needs 1GB RAM; ubuntu 14.04
   * personal stuff
     * mokingburd.de (static website)
     * capr.github.io (static website)
-    * luapower.com/otr (static website)
+    * luapower.com/oldbeat (static website)
     * ifthen-dojo.io (openresty+luapower+webb)
 
 ## crontab
@@ -143,8 +143,8 @@ mokingburd.de
 	git clone git@github.com:capr/mokingburd.de.git  # nginx is already configured to serve it
 capr.github.io
 	git clone git@github.com:capr/capr.github.io.git  # nginx is already configured to serve it
-luapower.com/otr
-	git clone git@github.com:capr/otr.git  # nginx is already configured to serve it
+luapower.com/oldbeat
+	git clone git@github.com:capr/oldbeat.git  # nginx is already configured to serve it
 ifthen-dojo (TODO)
 	git clone git@github.com:capr/ifthen-dojo-website.git ifthen-dojo.io  # nginx is already configured to serve it
 
