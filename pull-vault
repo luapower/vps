@@ -1,0 +1,1 @@
+wget -qO- https://gist.githubusercontent.com/capr/faafcb47439cd6bde2ff/raw/8a3292603c06e6600dd55ea96f7386146a00ab7c/dump > $HOME/vault

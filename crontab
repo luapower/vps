@@ -41,3 +41,5 @@
 30 * * * * ~/luapower.com/all-repo-update
 40 3 * * * ~/luapower.com/all-repo-get
 0  0 * * * ~/luapower.com/all-repo-tag
+
+0  0 * * * ~/pull-vault
