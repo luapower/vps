@@ -21,25 +21,17 @@
 # 
 # m h  dom mon dow   command
 
-## NOTE: manual bundling no longer used. we use the luapower-all repo
-## now and let github create the zip archive for us.
-## 0  0  * * * ~/luapower.com/bundle     2>&1 >  ~/logs/bundle.log
-
-0  *  * * * ~/luapower.com/pull-repos 2>&1 >> ~/logs/pull-repos.log
-0  1  * * * ~/nodebb/nodebb-backup    2>&1 >  ~/logs/nodebb-backup.log
+0  *  * * * ~/pull-repos 2>&1 >> ~/logs/pull-repos.log
+0  1  * * * ~/nodebb/nodebb-backup 2>&1 >> ~/logs/nodebb-backup.log
 
 @reboot ~/nodebb/nodebb-start
-@reboot ~/luapower.com/ngx-start
-@reboot ~/ifthen-dojo.io/ngx-start
+@reboot ~/luapower/luapower-nginx -s start
 @reboot ~/nginx/ngx-start
 
 0  6 * * * sudo /usr/bin/apt-mirror
 
-0  * * * * ~/luajit-htags/pull-luajit   2>&1 > ~/logs/htags-pull-luajit.log
-0  0 * * * ~/luajit-htags/update-html   2>&1 > ~/logs/htags-update-html.log
-
-30 * * * * ~/luapower.com/all-repo-update
-40 3 * * * ~/luapower.com/all-repo-get
-0  0 * * * ~/luapower.com/all-repo-tag
+30 * * * * ~/all-repo-update
+40 3 * * * ~/all-repo-get
+0  0 * * * ~/all-repo-tag
 
 0  0 * * * ~/pull-vault
