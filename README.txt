@@ -1,6 +1,6 @@
 # luapower vps installation
 
-needs 1GB RAM; ubuntu 14.04
+needs 1GB RAM; Ubuntu 18.04
 
 
 ## functionality
@@ -11,12 +11,10 @@ needs 1GB RAM; ubuntu 14.04
     * mirror for compiler tools (static files)
     * apt mirror for ubuntu's "test toolchain" PPA
     * git mirror for luapower repos (git-mirror; currently empty)
-    * luajit browsable sources (htags-generated static website)
   * personal stuff
     * mokingburd.de (static website)
     * capr.github.io (static website)
     * luapower.com/oldbeat (static website)
-    * ifthen-dojo.io (openresty+luapower+webb)
 
 ## crontab
 
@@ -26,9 +24,6 @@ needs 1GB RAM; ubuntu 14.04
     * update/push luapower-all (each half hour, so that master.zip from the download button reflects the current state of the code)
     * release-tag luapower-all (daily, so that we can download old releases)
     * download github.com/luapower/luapower-all/archive/master.zip (every day, so that its reported size on the download button reflects the actual size of the archive)
-  * luajit htags
-    * pull official LuaJIT for htags (hourly)
-    * update the LuaJIT htags (daily)
   * forum
     * backup the redis db and any new files (plugins, customization, etc.) to the `forum` repo (daily)
 
@@ -38,8 +33,8 @@ needs 1GB RAM; ubuntu 14.04
 ### update/install packages
 
 	apt-get update
-	apt-get install apt-mirror build-essential cscope dos2unix dpkg-dev fcgiwrap git git-core global htop imagemagick lib32bz2-1.0 lib32ncurses5 lib32z1 libncurses5-dev libpcre3-dev libreadline-dev libssl-dev make mc nodejs nodejs-legacy npm pandoc python-software-properties software-properties-common tig zip curl mysql-server php5-common php5-cli php5-fpm php5-mysql
-	
+	apt-get install apt-mirror build-essential cscope dos2unix dpkg-dev fcgiwrap git git-core global htop imagemagick lib32bz2-1.0 lib32ncurses5 lib32z1 libncurses5-dev libpcre3-dev libreadline-dev libssl-dev make mc nodejs nodejs-legacy npm python-software-properties software-properties-common tig zip curl mysql-server php5-common php5-cli php5-fpm php5-mysql
+
 ### install git-lfs
 
 	curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -93,13 +88,6 @@ nodebb
 	mgit clone-release fixed
 	*** get secret from safe and put it into .mgit/secret and into config.json
 	mgit restore   # restore the database
-openresty
-	wget https://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz
-	tar xvfz ngx_openresty-1.7.10.1.tar.gz
-	cd ngx_openresty-1.7.10.1
-	./configure --prefix=/home/cosmin/openresty
-	make
-	make install
 ssl-cert
 	mkdir ssl-cert
 	cd ssl-cert
@@ -111,15 +99,6 @@ ssl-cert
 files
 	cd files
 	./get-all.sh   # actually get them from the mega backup
-website
-	git clone git@github.com:luapower/website.git luapower.com
-	cd luapower.com
-	ln -s ../luapower luapower
-	ln -s ../openresty openresty
-	ln -s ../files files
-luajit-htags
-	git clone git@github.com:capr/luajit-htags.git
-	ln -s ../luajit-htags/htags files/htags
 apt-mirror
 	*** comment all lines in /etc/apt/mirror.list and enter these lines instead:
 		deb-amd64 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu lucid main
@@ -132,8 +111,7 @@ cron & boot
 ## start the servers
 
 	./nodebb/nodebb-start
-	./luapower.com/ngx-start
-	./ifthen-dojo.io/ngx-start
+	./luapower/luapower-nginx -s start
 	./nginx/ngx-start
 
 
@@ -145,6 +123,4 @@ capr.github.io
 	git clone git@github.com:capr/capr.github.io.git  # nginx is already configured to serve it
 luapower.com/oldbeat
 	git clone git@github.com:capr/oldbeat.git  # nginx is already configured to serve it
-ifthen-dojo (TODO)
-	git clone git@github.com:capr/ifthen-dojo-website.git ifthen-dojo.io  # nginx is already configured to serve it
 
