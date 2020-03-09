@@ -88,7 +88,7 @@ nodebb
 	mgit clone-release fixed
 	*** get secret from safe and put it into .mgit/secret and into config.json
 	mgit restore   # restore the database
-ssl-cert
+ssl-cert (old)
 	mkdir ssl-cert
 	cd ssl-cert
 	*** make file luapower.com.key with contents from safe
@@ -96,6 +96,15 @@ ssl-cert
 	*** make file ifthen-dojo.io.key with contents from safe
 	*** make file ifthen-dojo.io.crt with contents from safe (paste both CRT and CA sections)
 	openssl dhparam -out dhparam.pem 4096 (note: this will take 15min to complete!)
+ssl-cert / letsencrypt (new)
+	sudo add-apt-repository ppa:certbot/certbot
+	sudo apt-get update
+	sudo certbot certonly --deploy-hook "/home/cosmin/nginx/ngx -s reload" --webroot -w /home/cosmin/luapower/luapower-www -d luapower.com
+ssl-cert / letsencrypt (renew)
+	put `webroot-path = /home/cosmin/luapower/luapower-www` in /etc/letsencrypt/cli.ini
+	put `authenticator = webroot` in /etc/letsencrypt/renewal/luapower.com.conf
+	put `sudo -u cosmin /home/cosmin/nginx/ngx -s reload` in /etc/letsencrypt/renewal-hooks/deploy/ngx-reload
+	put `sudo certbot renew` in /home/cosmin/crontab
 files
 	cd files
 	./get-all.sh   # actually get them from the mega backup
