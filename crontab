@@ -30,6 +30,5 @@
 0  0 * * * ~/pull-vault
 0  0 * * * sudo certbot renew
 
-@reboot ~/nodebb/nodebb-start
-@reboot ~/luapower/luapower-nginx -s start
+@reboot ~/luapower/nginx-luapower
 @reboot ~/nginx/ngx-start

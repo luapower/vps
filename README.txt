@@ -120,7 +120,7 @@ cron & boot
 ## start the servers
 
 	./nodebb/nodebb-start
-	./luapower/luapower-nginx -s start
+	./luapower/nginx-luapower
 	./nginx/ngx-start
 
 
