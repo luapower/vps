@@ -5,3 +5,5 @@
 	default = simple
 [url "ssh://git@github.com/luapower/"]
 	insteadOf = https://github.com/luapower/
+[url "ssh://git@github.com/capr/"]
+	insteadOf = https://github.com/capr/
