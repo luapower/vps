@@ -28,7 +28,8 @@
 40 3 * * * ~/all-repo-get 2>&1 >> ~/logs/all-repo-get.log
 0  0 * * * ~/all-repo-tag 2>&1 >> ~/logs/all-repo-tag.log
 0  0 * * * ~/pull-vault
-0  0 * * * sudo certbot renew
+0  0 * * * ~/pull-scrapbook
+0  0 * * */7 ~/.acme.sh/acme.sh --cron --home "/home/cosmin/.acme.sh" > ~/logs/acme.log
 
 @reboot ~/luapower/nginx-luapower
 @reboot ~/nginx/ngx-start

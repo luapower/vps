@@ -8,6 +8,4 @@
 !apt-*
 !git-*
 !.selected_editor
-!.config/
-!.config/**
 !*.txt
