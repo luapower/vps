@@ -11,7 +11,7 @@ mgit luapower-repos pull | check && REPOS_UPDATED=1
 UNCLONED="$(mgit ls-uncloned)"
 [ "$UNCLONED" ] && mgit clone-all
 UNCLONED="$(mgit ls-uncloned)"
-[ "$UNCLONED" ] && "There are still uncloned repos: $UNCLONED."
+[ "$UNCLONED" ] && echo "There are still uncloned repos: $UNCLONED."
 
 for pkg in $(mgit ls); do
 	mgit - $pkg pull | (check || ../clear-cache $pkg; echo "Updated: $pkg.")

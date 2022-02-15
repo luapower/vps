@@ -22,14 +22,12 @@
 # m h  dom mon dow   command
 
 0  * * * * ~/pull-repos 2>&1 >> ~/logs/pull-repos.log
-0  1 * * * ~/nodebb/nodebb-backup 2>&1 >> ~/logs/nodebb-backup.log
-0  6 * * * sudo /usr/bin/apt-mirror
 30 * * * * ~/all-repo-update 2>&1 >> ~/logs/all-repo-update.log
 40 3 * * * ~/all-repo-get 2>&1 >> ~/logs/all-repo-get.log
 0  0 * * * ~/all-repo-tag 2>&1 >> ~/logs/all-repo-tag.log
 0  0 * * * ~/pull-vault
 0  0 * * * ~/pull-scrapbook
-0  0 * * */7 ~/.acme.sh/acme.sh --cron --home "/home/cosmin/.acme.sh" > ~/logs/acme.log
+0  0 1/2 * */7 ~/ssl-certs-renew
 
 @reboot ~/luapower/nginx-luapower
 @reboot ~/nginx/ngx-start

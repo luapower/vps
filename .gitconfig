@@ -7,3 +7,5 @@
 	insteadOf = https://github.com/luapower/
 [url "ssh://git@github.com/capr/"]
 	insteadOf = https://github.com/capr/
+[url "ssh://git@github.com/allegory-software/"]
+	insteadOf = https://github.com/allegory-software/
