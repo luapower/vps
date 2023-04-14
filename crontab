@@ -27,7 +27,7 @@
 0  0 * * * ~/all-repo-tag 2>&1 >> ~/logs/all-repo-tag.log
 0  0 * * * ~/pull-vault
 0  0 * * * ~/pull-scrapbook
-0  0 1/2 * */7 ~/ssl-certs-renew
+0  0 * * * ~/ssl-certs-renew 2>&1 >> ~/logs/ssl-certs-renew.log
 
 @reboot ~/luapower/nginx-luapower
 @reboot ~/nginx/ngx-start
